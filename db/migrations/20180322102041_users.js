@@ -8,7 +8,7 @@ exports.up = function(knex, Promise) {
     table.text('bio').notNullable().defaultTo('')
     table.text('interests').notNullable().defaultTo('')
     table.text('color').notNullable().defaultTo('')
-    table.specificType('friendIds', 'jsonb[]')
+    table.specificType('friends', 'jsonb[]')
     table.timestamps(true, true)
   })
 };
