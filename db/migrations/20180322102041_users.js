@@ -1,4 +1,4 @@
-exports.up = function(knex, Promise) {
+exports.up = function (knex, Promise) {
   return knex.schema.createTable('User', table => {
     table.increments()
     table.text('name').notNullable()
@@ -8,11 +8,11 @@ exports.up = function(knex, Promise) {
     table.text('bio').notNullable().defaultTo('')
     table.text('interests').notNullable().defaultTo('')
     table.text('color').notNullable().defaultTo('')
-    table.specificType('friendIds', 'jsonb[]')
+    table.specificType('friends', 'jsonb[]')
     table.timestamps(true, true)
   })
 };
 
-exports.down = function(knex, Promise) {
+exports.down = function (knex, Promise) {
   return knex.schema.dropTable('User')
 };
