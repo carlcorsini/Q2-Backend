@@ -16,6 +16,23 @@ getAllUsers = (req, res, next) => {
   })
 }
 
+getUserById = (req, res, next) => {
+  let promise = model.getUserById(req.params.id)
+
+  promise.then((result) => {
+    // console.log(users)
+    res.status(200).json({
+      result,
+      message: `id of ${req.params.id} returned`
+    })
+  })
+
+  promise.catch((error) => {
+    res.status().json()
+  })
+}
+
 module.exports = {
-  getAllUsers
+  getAllUsers,
+  getUserById
 }
