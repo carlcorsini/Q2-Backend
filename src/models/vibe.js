@@ -3,9 +3,10 @@ const uuid = require('uuid/v4')
 const path = require('path')
 
 getAllUsers = () => {
-  return db('User').then(record => {
-    console.log("RECORD", record.record);
-    return record
+
+  return db('User').then((users) => {
+    console.log("users", users);
+    return users
   })
 }
 
