@@ -3,7 +3,8 @@ const app = express()
 const morgan = require('morgan')
 const bodyParser = require('body-parser')
 const fs = require('fs')
-const port = process.env.PORT || 3000
+const port = process.env.PORT || 5000
+
 
 if (process.env.NODE_ENV !== 'test') app.use(morgan('dev'))
 app.use(bodyParser.json())
