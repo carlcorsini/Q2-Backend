@@ -8,11 +8,13 @@ const port = process.env.PORT || 3000
 if (process.env.NODE_ENV !== 'test') app.use(morgan('dev'))
 app.use(bodyParser.json())
 
-// Amy's branch :) 
+const vibeRoutes = require('./src/routes/vibe.js')
+
+app.use('/vibe', vibeRoutes)
 
 if (process.env.NODE_ENV !== 'test') {
   app.listen(port, () => {
-    console.log(`Snacks are running on port ${port}!`)
+    console.log(`The vibe is strong on port ${port}!`)
   })
 }
 module.exports = app
