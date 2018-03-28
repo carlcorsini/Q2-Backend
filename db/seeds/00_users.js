@@ -1,13 +1,14 @@
-exports.seed = function (knex, Promise) {
+exports.seed = function(knex, Promise) {
   // Deletes ALL existing entries
   return knex('User').del()
-    .then(function () {
+    .then(function() {
       // Inserts seed entries
       return knex('User').insert([{
           id: 1,
           name: 'Carl Corsini',
           email: 'carl.c.1192@gmail.com',
           password: 'yahoo',
+          profile_pic: 'https://images.pexels.com/photos/127028/pexels-photo-127028.jpeg?auto=compress&cs=tinysrgb&h=350',
           location: 'San Francisco, CA',
           bio: 'Some really boring information about yourself',
           interests: 'Some cool stuff about yourself and wormholes',
@@ -19,6 +20,7 @@ exports.seed = function (knex, Promise) {
           name: 'Amy Boudsady',
           email: 'aeimskei@gmail.com',
           password: 'meowmix',
+          profile_pic: 'https://images.pexels.com/photos/127028/pexels-photo-127028.jpeg?auto=compress&cs=tinysrgb&h=350',
           location: 'San Francisco, CA',
           bio: 'Some really boring information about yourself',
           interests: 'Some cool stuff about yourself and food',
@@ -30,6 +32,7 @@ exports.seed = function (knex, Promise) {
           name: 'Glen Pegado',
           email: 'glenpgd@gmail.com',
           password: 'password',
+          profile_pic: 'https://images.pexels.com/photos/127028/pexels-photo-127028.jpeg?auto=compress&cs=tinysrgb&h=350',
           location: 'San Francisco, CA',
           bio: 'Some really boring information about yourself',
           interests: 'Some cool stuff about yourself and the future',
