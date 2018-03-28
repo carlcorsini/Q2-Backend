@@ -32,7 +32,24 @@ getUserById = (req, res, next) => {
   })
 }
 
+getUserImages = (req, res, next) => {
+  let promise = model.getUserImages(req.params.id)
+
+  promise.then((result) => {
+    // console.log(users)
+    res.status(200).json({
+      result,
+      message: `Images of ${req.params.id} returned`
+    })
+  })
+
+  promise.catch((error) => {
+    res.status().json()
+  })
+}
+
 module.exports = {
   getAllUsers,
-  getUserById
+  getUserById,
+  getUserImages
 }

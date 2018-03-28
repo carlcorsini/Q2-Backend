@@ -14,9 +14,19 @@ getUserById = (id) => {
   })
 }
 
+getUserImages = (id) => {
+  return db('User').where('User.id', id).select('User.id', 'Images.image_url')
+    .join('Images', 'User.id', 'Images.user_id')
+    .then(result => {
+      console.log(result);
+      return result
+    })
+}
+
 
 
 module.exports = {
   getAllUsers,
-  getUserById
+  getUserById,
+  getUserImages
 }
