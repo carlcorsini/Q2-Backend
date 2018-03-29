@@ -48,8 +48,25 @@ getUserImages = (req, res, next) => {
   })
 }
 
+getFriends = (req, res, next) => {
+  let promise = model.getFriends(req.params.id)
+
+  promise.then((result) => {
+    // console.log(users)
+    res.status(200).json({
+      result,
+      message: `Friends of ${req.params.id} returned`
+    })
+  })
+
+  promise.catch((error) => {
+    res.status().json()
+  })
+}
+
 module.exports = {
   getAllUsers,
   getUserById,
-  getUserImages
+  getUserImages,
+  getFriends
 }
