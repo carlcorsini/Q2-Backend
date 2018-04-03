@@ -1,5 +1,9 @@
 const model = require('../models/vibe')
 
+// ===============================================
+// PROCESS USER DATA MODELS TO READ/SHOW
+// ===============================================
+
 getAllUsers = (req, res, next) => {
   let promise = model.getAllUsers(req.query.limit)
 

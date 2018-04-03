@@ -2,6 +2,10 @@ const db = require('../../db')
 const uuid = require('uuid/v4')
 const path = require('path')
 
+// ===============================================
+// MANAGE USER DATA
+// ===============================================
+
 getAllUsers = () => {
   return db('User').then(users => {
     return users
