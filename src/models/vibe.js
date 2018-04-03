@@ -28,9 +28,18 @@ getUserImages = (id) => {
 }
 
 getFriends = (id) => {
-  return db('User').where('id', id).select('friends').then(result => {
+  return db('friendships').join('User', 'User.id', 'friendships.follower_id').where('friendships.follower_id', id).select('followee_id').then(result => {
     return result
+    console.log(result);
   })
+}
+
+createProfile = (id) => {
+  return db('User')
+}
+
+updateProfile = (id) => {
+  return db('User').where('id', id).update('name', 'new-name')
 }
 
 
@@ -38,5 +47,7 @@ module.exports = {
   getAllUsers,
   getUserById,
   getUserImages,
-  getFriends
+  getFriends,
+  createProfile,
+  updateProfile
 }
