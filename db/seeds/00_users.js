@@ -13,7 +13,7 @@ exports.seed = function(knex, Promise) {
           bio: 'Some really boring information about yourself',
           interests: 'Some cool stuff about yourself and wormholes',
           color: 'Orange',
-          friends: [2, 3]
+          friends: [2, 3, 4, 6]
         },
         {
           id: 2,
@@ -37,7 +37,7 @@ exports.seed = function(knex, Promise) {
           bio: 'Some really boring information about yourself',
           interests: 'Some cool stuff about yourself and the future',
           color: 'Black',
-          friends: [1, 3]
+          friends: [1, 2, 4, 5]
         },
         {
           id: 4,
@@ -49,7 +49,31 @@ exports.seed = function(knex, Promise) {
           bio: 'Some really boring information about yourself',
           interests: 'Some cool stuff about yourself and pandas',
           color: 'Black',
-          friends: [1, 3, 2]
+          friends: [1, 2, 3, 5]
+        },
+        {
+          id: 5,
+          name: 'Robson',
+          email: 'Robson@gmail.com',
+          password: 'password',
+          profile_pic: 'https://listen-current-prod.s3.amazonaws.com/events/photos/000/000/467/5dc32f692b8388e9e001b1c7c940bb74e17aa1bc/medium/Panda.Square.png?1434136392',
+          location: 'San Francisco, CA',
+          bio: 'Some really boring information about yourself',
+          interests: 'Some cool stuff about yourself and pandas',
+          color: 'Black',
+          friends: [1, 2, 3, 4]
+        },
+        {
+          id: 6,
+          name: 'Michael',
+          email: 'michael.alex.guia@gmail.com',
+          password: 'password',
+          profile_pic: 'http://images1.fanpop.com/images/quiz/2462_1210885994882_446_240.jpg',
+          location: 'San Francisco, CA',
+          bio: 'I like turtles ',
+          interests: 'Some cool stuff about yourself and pandas',
+          color: 'Black',
+          friends: [1, 2, 3, 4]
         },
 
       ]);
