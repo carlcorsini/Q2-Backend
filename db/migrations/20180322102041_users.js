@@ -9,7 +9,6 @@ exports.up = function(knex, Promise) {
     table.text('bio').defaultTo('')
     table.text('interests').defaultTo('')
     table.text('color').defaultTo('')
-    table.specificType('friends', 'jsonb[]')
     table.timestamps(true, true)
   })
 };

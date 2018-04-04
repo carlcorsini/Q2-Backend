@@ -12,8 +12,7 @@ exports.seed = function(knex, Promise) {
           location: 'San Francisco, CA',
           bio: 'Some really boring information about yourself',
           interests: 'Some cool stuff about yourself and wormholes',
-          color: 'Orange',
-          friends: [2, 3, 4, 6]
+          color: 'Orange'
         },
         {
           id: 2,
@@ -24,8 +23,7 @@ exports.seed = function(knex, Promise) {
           location: 'San Francisco, CA',
           bio: 'Some really boring information about yourself',
           interests: 'Some cool stuff about yourself and food',
-          color: 'White',
-          friends: [1, 3, 2, 4]
+          color: 'White'
         },
         {
           id: 3,
@@ -36,8 +34,7 @@ exports.seed = function(knex, Promise) {
           location: 'San Francisco, CA',
           bio: 'Some really boring information about yourself',
           interests: 'Some cool stuff about yourself and the future',
-          color: 'Black',
-          friends: [1, 2, 4, 5]
+          color: 'Black'
         },
         {
           id: 4,
@@ -48,8 +45,7 @@ exports.seed = function(knex, Promise) {
           location: 'San Francisco, CA',
           bio: 'Some really boring information about yourself',
           interests: 'Some cool stuff about yourself and pandas',
-          color: 'Black',
-          friends: [1, 2, 3, 5]
+          color: 'Black'
         },
         {
           id: 5,
@@ -60,8 +56,7 @@ exports.seed = function(knex, Promise) {
           location: 'San Francisco, CA',
           bio: 'Some really boring information about yourself',
           interests: 'Some cool stuff about yourself and pandas',
-          color: 'Black',
-          friends: [1, 2, 3, 4]
+          color: 'Black'
         },
         {
           id: 6,
@@ -72,8 +67,7 @@ exports.seed = function(knex, Promise) {
           location: 'San Francisco, CA',
           bio: 'I like turtles ',
           interests: 'Some cool stuff about yourself and pandas',
-          color: 'Black',
-          friends: [1, 2, 3, 4]
+          color: 'Black'
         },
 
       ]);
