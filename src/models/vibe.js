@@ -28,7 +28,7 @@ getUserImages = (id) => {
 }
 
 getFriends = (id) => {
-  return db('friendships').join('User', 'User.id', 'friendships.follower_id').where('friendships.follower_id', id).select('followee_id').then(result => {
+  return db('friendships').join('User', 'User.id', 'friendships.follower_id').where('friendships.follower_id', id).select('followee_id', 'profile_pic').then(result => {
     return result
     console.log(result);
   })
