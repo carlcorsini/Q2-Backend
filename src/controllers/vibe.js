@@ -72,10 +72,12 @@ createProfile = (req, res, next) => {
 
 }
 
-//update profile_pic
+// ===============================================
+// PROCESS USER DATA MODELS TO UPDATE/PUT
+// ===============================================
 
 updateProfile = (req, res, next) => {
-  console.log(req.params.id);
+  // console.log(req.params.id);
   let promise = model.updateProfile(req.params.id)
 
   promise.then((result) => {
