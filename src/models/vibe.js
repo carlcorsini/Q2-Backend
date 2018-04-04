@@ -38,6 +38,11 @@ updateProfile = (id) => {
   return db('User').where('id', id).update('name', 'new-name')
 }
 
+updateProfile = (id) => {
+  return db('User').where('id', id).update('name', 'new-name')
+}
+
+
 
 module.exports = {
   getAllUsers,
