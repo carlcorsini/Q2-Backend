@@ -38,9 +38,11 @@ createProfile = (id) => {
   return db('User')
 }
 
-updateProfile = (id) => {
-  return db('User').where('id', id).update('name', 'new-name')
+updateProfile = (id, bio, profile_pic, interests) => {
+  return db('User').where('id', id).update('bio', bio).update('profile_pic', profile_pic).update('interests', interests)
 }
+
+
 
 
 module.exports = {
