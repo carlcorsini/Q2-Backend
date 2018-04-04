@@ -17,6 +17,7 @@ getAllUsers = (req, res, next) => {
 }
 
 getUserById = (req, res, next) => {
+
   let promise = model.getUserById(req.params.id)
 
   promise.then((result) => {

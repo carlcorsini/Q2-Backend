@@ -29,5 +29,5 @@ exports.seed = function(knex, Promise) {
           followee_id: 4
         },
       ]);
-    }).then(() => knex.raw(`SELECT setval('"User_groups_id_seq"', (SELECT MAX("id") FROM "User_groups"))`))
+    }).then(() => knex.raw(`SELECT setval('"friendships_id_seq"', (SELECT MAX("id") FROM "friendships"))`))
 };
