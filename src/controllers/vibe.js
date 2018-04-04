@@ -72,8 +72,7 @@ createProfile = (req, res, next) => {
 //update profile_pic
 
 updateProfile = (req, res, next) => {
-  console.log(req.params.id);
-  let promise = model.updateProfile(req.params.id)
+  let promise = model.updateProfile(req.params.id, req.body.bio, req.body.profile_pic, req.body.interests)
 
   promise.then((result) => {
     // console.log(users)
