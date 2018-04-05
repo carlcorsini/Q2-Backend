@@ -13,7 +13,7 @@ describe('The Vibe', function() {
     })
     return tmpConnection.raw(`CREATE DATABASE ${config.connection.database};`)
       .catch((errr) => {
-        console.log(errr);
+        //console.log(errr);
         Promise.resolve('Everything is OK')
       })
       .then(() => global.knex = require('../db'))
@@ -48,63 +48,38 @@ describe('The Vibe', function() {
     })
   })
 
-  xdescribe('#getAllGlassesWithCocktailsNested()', function() {
-    it('should return a list of all the glasses in the database with associated cocktails nested inside', function() {
-      return main.getAllGlassesWithCocktailsNested().then(result => {
+  describe('#getUserImages()', function() {
+    it('should return a list of all images in the database associated with that user', function() {
+      return vibe.getUserImages(1).then(result => {
         expect(result.length).to.equal(3)
 
         const row = result[0]
-        expect(row.id).to.be.ok
-        expect(row.name).to.be.ok
+        expect(row.title).to.be.ok
+        expect(row.description).to.be.ok
 
-        const cocktails = row.cocktails
-        expect(cocktails).to.be.ok
-
-        const cocktail = cocktails[0]
-        expect(cocktail.id).to.be.ok
-        expect(cocktail.name).to.be.ok
-        expect(cocktail.instructions).to.be.ok
-        expect(cocktail.garnish).to.be.ok
       })
     })
   })
 
-  xdescribe('#getCocktailsAndIngredients()', function() {
-    it('should return a list of all the cocktails and ingredients in the database', function() {
-      return main.getCocktailsAndIngredients().then(result => {
-        expect(result.length).to.equal(11)
+  describe('#getFriends()', function() {
+    it('should return a list of all friends associated with that user', function() {
+      return vibe.getFriends(1).then(result => {
+        expect(result.length).to.equal(3)
 
         const row = result[0]
-        expect(row.id).to.be.ok
-        expect(row.name).to.be.ok
-        expect(row.instructions).to.be.ok
-        expect(row.garnish).to.be.ok
-        expect(row.glass_id).to.be.ok
-        expect(row.cocktail_id).to.be.ok
-        expect(row.ingredient_id).to.be.ok
-        expect(row.amount).to.be.ok
+        expect(row.followee_id).to.be.ok
+        expect(row.profile_pic).to.be.ok
       })
     })
   })
 
-  xdescribe('#getCocktailsWithNestedIngredients()', function() {
-    it('should return a list of all the cocktails with nested ingredients', function() {
-      return main.getCocktailsWithNestedIngredients().then(cocktails => {
-        expect(cocktails.length).to.equal(3)
+  describe('#uploadImage()', function() {
+    it('should upload an image to the database', function() {
+      return vibe.uploadImage(1, 'example.com', 'title', 'description').then(images => {
+        expect(images.length).to.equal(10)
 
-        const manhattan = cocktails.find(cocktail => cocktail.name === 'Manhattan')
-        expect(manhattan.id).to.be.ok
-        expect(manhattan.name).to.be.ok
-        expect(manhattan.instructions).to.be.ok
-        expect(manhattan.garnish).to.be.ok
-
-        const ingredients = manhattan.ingredients
-        expect(ingredients).to.be.ok
-
-        const ingredient = ingredients[0]
-        expect(ingredient.id).to.be.ok
-        expect(ingredient.name).to.be.ok
-        expect(ingredient.amount).to.be.ok
+        const row = images[images.length - 1]
+        expect(row.image_url).to.equal('example.com')
       })
     })
   })
