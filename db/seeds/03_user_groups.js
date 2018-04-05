@@ -1,9 +1,9 @@
 exports.seed = function(knex, Promise) {
   // Deletes ALL existing entries
-  return knex('User_groups').del()
+  return knex('users_groups').del()
     .then(function() {
       // Inserts seed entries
-      return knex('User_groups').insert([{
+      return knex('users_groups').insert([{
           id: 1,
           user_id: 1,
           groups_id: 1
@@ -19,5 +19,5 @@ exports.seed = function(knex, Promise) {
           groups_id: 2
         }
       ]);
-    }).then(() => knex.raw(`SELECT setval('"User_groups_id_seq"', (SELECT MAX("id") FROM "User_groups"))`))
+    }).then(() => knex.raw(`SELECT setval('"users_groups_id_seq"', (SELECT MAX("id") FROM "users_groups"))`))
 };
