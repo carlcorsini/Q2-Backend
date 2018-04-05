@@ -1,14 +1,14 @@
 exports.up = function(knex, Promise) {
-  return knex.schema.createTable('Images', table => {
+  return knex.schema.createTable('media', table => {
     table.increments()
-    table.text('image_url').notNullable()
+    table.text('url').notNullable()
     table.text('title').notNullable()
     table.text('description').notNullable()
-    table.integer('user_id').references('User.id').onDelete('cascade');
+    table.integer('user_id').references('user.id').onDelete('cascade');
     table.timestamps(true, true)
   })
 };
 
 exports.down = function(knex, Promise) {
-  return knex.schema.dropTable('Images')
+  return knex.schema.dropTable('media')
 };

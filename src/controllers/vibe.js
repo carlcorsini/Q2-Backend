@@ -100,12 +100,26 @@ updateProfile = (req, res, next) => {
 }
 
 uploadImage = (req, res, next) => {
-  let promise = model.uploadImage(req.params.id, req.body.image_url, req.body.title, req.body.description)
+  let promise = model.uploadImage(req.params.id, req.body.url, req.body.title, req.body.description)
 
   promise.then((result) => {
     res.status(200).json({
       result,
       message: `Image uploaded to ${req.params.id} updated`
+    })
+  })
+
+  // promise.catch((error) => {
+  //   res.status().json()
+  // })
+}
+follow = (req, res, next) => {
+  let promise = model.follow(req.body.friend, req.body.stashedVariable)
+
+  promise.then((result) => {
+    res.status(200).json({
+      result,
+      message: `Image uploaded to ${req.body.follower} updated`
     })
   })
 
@@ -121,5 +135,6 @@ module.exports = {
   getFriends,
   createProfile,
   updateProfile,
-  uploadImage
+  uploadImage,
+  follow
 }
