@@ -18,4 +18,6 @@ router.put('/:id', ctrl.updateProfile)
 
 router.post('/images/:id', ctrl.uploadImage)
 
+router.post('/friends', ctrl.follow)
+
 module.exports = router
