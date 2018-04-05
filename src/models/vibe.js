@@ -30,13 +30,29 @@ getFriends = (id) => {
   })
 }
 
-createProfile = (id) => {
-  return db('User')
+createProfile = (name, email, password) => {
+  return db('User').insert({
+    name,
+    email,
+    password
+  })
 }
 
 updateProfile = (id, bio, profile_pic, interests) => {
   return db('User').where('id', id).update('bio', bio).update('profile_pic', profile_pic).update('interests', interests)
 }
+
+uploadImage = (id, url, title, description) => {
+  db('Images').insert({
+    image_url: url,
+    title: title,
+    description: description,
+    user_id: id
+  }).then(result => {
+    return db('Images')
+  })
+}
+
 
 
 
@@ -47,5 +63,6 @@ module.exports = {
   getUserImages,
   getFriends,
   createProfile,
-  updateProfile
+  updateProfile,
+  uploadImage
 }
