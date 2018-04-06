@@ -1,9 +1,9 @@
 exports.seed = function(knex, Promise) {
   // Deletes ALL existing entries
-  return knex('Groups').del()
+  return knex('groups').del()
     .then(function() {
       // Inserts seed entries
-      return knex('Groups').insert([{
+      return knex('groups').insert([{
           id: 1,
           name: 'Galvanize',
           summary: 'This group is for Galvanize alumni',
@@ -22,5 +22,5 @@ exports.seed = function(knex, Promise) {
           color: "black"
         }
       ]);
-    }).then(() => knex.raw(`SELECT setval('"Groups_id_seq"', (SELECT MAX("id") FROM "Groups"))`))
+    }).then(() => knex.raw(`SELECT setval('"groups_id_seq"', (SELECT MAX("id") FROM "groups"))`))
 };

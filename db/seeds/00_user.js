@@ -1,9 +1,9 @@
 exports.seed = function(knex, Promise) {
   // Deletes ALL existing entries
-  return knex('User').del()
+  return knex('user').del()
     .then(function() {
       // Inserts seed entries
-      return knex('User').insert([{
+      return knex('user').insert([{
           id: 1,
           name: 'Carl Corsini',
           email: 'carl.c.1192@gmail.com',
@@ -71,5 +71,5 @@ exports.seed = function(knex, Promise) {
         },
 
       ]);
-    }).then(() => knex.raw(`SELECT setval('"User_id_seq"', (SELECT MAX("id") FROM "User"))`))
+    }).then(() => knex.raw(`SELECT setval('"user_id_seq"', (SELECT MAX("id") FROM "user"))`))
 };
