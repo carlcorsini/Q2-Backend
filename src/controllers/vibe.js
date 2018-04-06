@@ -114,6 +114,18 @@ uploadImage = (req, res, next) => {
       message: `Image uploaded to ${req.params.id} updated`
     })
   })
+}
+
+search = (req, res, next) => {
+  console.log(req.params.input);
+  let promise = model.search(req.params.input)
+
+  promise.then((result) => {
+    res.status(200).json({
+      result,
+      // message: `Image uploaded to ${req.params.id} updated`
+    })
+  })
 
   // promise.catch((error) => {
   //   res.status().json()
@@ -159,5 +171,6 @@ module.exports = {
   updateProfile,
   uploadImage,
   follow,
-  deleteImage
+  deleteImage,
+  search
 }

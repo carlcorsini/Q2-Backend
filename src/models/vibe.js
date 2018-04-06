@@ -67,10 +67,15 @@ follow = (followee, follower) => {
   })
 }
 
+
 deleteImage = (id) => {
   return db('media').where('id', id).del().then(result => {
     return db('media')
   })
+
+search = (input) => {
+  return db('User').where('name',
+    'like', `%${input}%`)
 }
 
 
@@ -83,5 +88,7 @@ module.exports = {
   updateProfile,
   uploadImage,
   follow,
-  deleteImage
+  deleteImage,
+  search
+
 }
