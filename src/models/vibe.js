@@ -72,9 +72,10 @@ deleteImage = (id) => {
   return db('media').where('id', id).del().then(result => {
     return db('media')
   })
+}
 
 search = (input) => {
-  return db('User').where('name',
+  return db('user').where('name',
     'like', `%${input}%`)
 }
 
@@ -90,5 +91,4 @@ module.exports = {
   follow,
   deleteImage,
   search
-
 }
