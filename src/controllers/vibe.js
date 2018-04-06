@@ -90,7 +90,7 @@ createProfile = (req, res, next) => {
 // ===============================================
 
 updateProfile = (req, res, next) => {
-  let promise = model.updateProfile(req.params.id, req.body.bio, req.body.profile_pic, req.body.interests)
+  let promise = model.updateProfile(req.params.id, req.body.bio, req.body.profile_pic)
 
   promise.then((result) => {
 
