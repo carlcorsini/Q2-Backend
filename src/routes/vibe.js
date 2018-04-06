@@ -10,6 +10,9 @@ router.get('/images/:id', ctrl.getUserImages)
 
 router.get('/friends/:id', ctrl.getFriends)
 
+router.get('/search/:input', ctrl.search)
+
+
 //create profile
 router.post('/profile/', ctrl.createProfile)
 

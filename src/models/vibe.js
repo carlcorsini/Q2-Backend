@@ -62,8 +62,10 @@ follow = (followee, follower) => {
   })
 }
 
-
-
+search = (input) => {
+  return db('User').where('name',
+    'like', `%${input}%`)
+}
 
 
 module.exports = {
@@ -74,5 +76,6 @@ module.exports = {
   createProfile,
   updateProfile,
   uploadImage,
+  search,
   follow
 }
