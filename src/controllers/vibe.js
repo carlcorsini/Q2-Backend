@@ -126,12 +126,12 @@ search = (req, res, next) => {
   // })
 }
 follow = (req, res, next) => {
-  let promise = model.follow(req.body.friend, req.body.stashedVariable)
+  let promise = model.follow(req.body.userId, req.body.friend)
 
   promise.then((result) => {
     res.status(200).json({
       result,
-      message: `Image uploaded to ${req.body.follower} updated`
+      message: `Image uploaded to ${req.body.friend} updated`
     })
   })
 

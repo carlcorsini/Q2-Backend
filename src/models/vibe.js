@@ -63,7 +63,7 @@ follow = (followee, follower) => {
 }
 
 search = (input) => {
-  return db('User').where('name',
+  return db('user').where('name',
     'like', `%${input}%`)
 }
 
