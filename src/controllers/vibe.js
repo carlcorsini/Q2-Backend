@@ -106,7 +106,7 @@ updateProfile = (req, res, next) => {
 }
 
 uploadImage = (req, res, next) => {
-  let promise = model.uploadImage(req.params.id, req.body.url, req.body.title, req.body.description)
+  let promise = model.uploadImage(req.params.id, req.body.url, req.body.type, req.body.title, req.body.description)
 
   promise.then((result) => {
     res.status(200).json({
@@ -119,6 +119,7 @@ uploadImage = (req, res, next) => {
   //   res.status().json()
   // })
 }
+
 follow = (req, res, next) => {
   let promise = model.follow(req.body.friend, req.body.stashedVariable)
 
@@ -134,6 +135,18 @@ follow = (req, res, next) => {
   // })
 }
 
+deleteImage = (req, res, next) => {
+  let promise = model.deleteImage(req.params.id)
+
+  promise.then((result) => {
+    res.status(200).json({
+      result,
+      message: `Image delete to ${req.params.id} updated`
+    })
+  })
+
+}
+
 module.exports = {
   getAllUsers,
   getUserById,
@@ -142,5 +155,6 @@ module.exports = {
   createProfile,
   updateProfile,
   uploadImage,
-  follow
+  follow,
+  deleteImage
 }

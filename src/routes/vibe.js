@@ -24,4 +24,7 @@ router.post('/images/:id', ctrl.uploadImage)
 
 router.post('/friends', ctrl.follow)
 
+// delete
+router.delete('/images/:id', ctrl.deleteImage)
+
 module.exports = router
