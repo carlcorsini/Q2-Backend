@@ -5,7 +5,8 @@
   "main": "app.js",
   "scripts": {
     "test": "NODE_ENV=test mocha",
-    "knex": "knex"
+    "knex": "knex",
+    "start": "node app.js"
   },
   "repository": {
     "type": "git",
