@@ -2,6 +2,10 @@ const db = require('../../db')
 const uuid = require('uuid/v4')
 const path = require('path')
 
+// ===============================================
+// MANAGE USER DATA
+// ===============================================
+
 getAllUsers = () => {
   return db('user').then(users => {
     return users
@@ -15,7 +19,7 @@ getUserById = (id) => {
 }
 
 getUserImages = (id) => {
-  return db('user').where('user.id', id).select('user.id', 'media.url', 'media.title', 'media.description')
+  return db('user').where('user.id', id).select('user.id', 'media.id', 'media.url', 'media.type', 'media.title', 'media.description')
     .join('media', 'user.id', 'media.user_id')
     .then(result => {
       // console.log(result);
@@ -42,9 +46,10 @@ updateProfile = (id, bio, profile_pic, interests) => {
   return db('user').where('id', id).update('bio', bio).update('profile_pic', profile_pic).update('interests', interests)
 }
 
-uploadImage = (id, url, title, description) => {
+uploadImage = (id, url, type, title, description) => {
   return db('media').insert({
     url: url,
+    type: type,
     title: title,
     description: description,
     user_id: id
@@ -62,6 +67,12 @@ follow = (followee, follower) => {
   })
 }
 
+
+deleteImage = (id) => {
+  return db('media').where('id', id).del().then(result => {
+    return db('media')
+  })
+
 search = (input) => {
   return db('user').where('name',
     'like', `%${input}%`)
@@ -76,6 +87,8 @@ module.exports = {
   createProfile,
   updateProfile,
   uploadImage,
-  search,
-  follow
+  follow,
+  deleteImage,
+  search
+
 }

@@ -1,5 +1,9 @@
 const model = require('../models/vibe')
 
+// ===============================================
+// PROCESS USER DATA MODELS TO READ/SHOW
+// ===============================================
+
 getAllUsers = (req, res, next) => {
   let promise = model.getAllUsers(req.query.limit)
 
@@ -81,7 +85,9 @@ createProfile = (req, res, next) => {
   // })
 }
 
-//update profile_pic
+// ===============================================
+// PROCESS USER DATA MODELS TO UPDATE/PUT
+// ===============================================
 
 updateProfile = (req, res, next) => {
   let promise = model.updateProfile(req.params.id, req.body.bio, req.body.profile_pic, req.body.interests)
@@ -100,7 +106,7 @@ updateProfile = (req, res, next) => {
 }
 
 uploadImage = (req, res, next) => {
-  let promise = model.uploadImage(req.params.id, req.body.url, req.body.title, req.body.description)
+  let promise = model.uploadImage(req.params.id, req.body.url, req.body.type, req.body.title, req.body.description)
 
   promise.then((result) => {
     res.status(200).json({
@@ -125,6 +131,7 @@ search = (req, res, next) => {
   //   res.status().json()
   // })
 }
+
 follow = (req, res, next) => {
   let promise = model.follow(req.body.userId, req.body.friend)
 
@@ -140,6 +147,21 @@ follow = (req, res, next) => {
   // })
 }
 
+// ===============================================
+// PROCESS USER DATA MODELS TO DELETE/DESTROY
+// ===============================================
+
+deleteImage = (req, res, next) => {
+  let promise = model.deleteImage(req.params.id)
+
+  promise.then((result) => {
+    res.status(200).json({
+      result,
+      message: `Image delete to ${req.params.id} updated`
+    })
+  })
+}
+
 module.exports = {
   getAllUsers,
   getUserById,
@@ -148,6 +170,7 @@ module.exports = {
   createProfile,
   updateProfile,
   uploadImage,
-  search,
-  follow
+  follow,
+  deleteImage,
+  search
 }
