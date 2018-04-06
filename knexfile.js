@@ -27,5 +27,18 @@ module.exports = {
     seeds: {
       directory: './db/seeds'
     }
+  },
+  production: {
+    client: 'pg',
+    connection: {
+      host: 'localhost',
+      database: 'the_vibe'
+    },
+    migrations: {
+      directory: './db/migrations'
+    },
+    seeds: {
+      directory: './db/seeds'
+    }
   }
 }
