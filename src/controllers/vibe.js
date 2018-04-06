@@ -135,6 +135,10 @@ follow = (req, res, next) => {
   // })
 }
 
+// ===============================================
+// PROCESS USER DATA MODELS TO DELETE/DESTROY
+// ===============================================
+
 deleteImage = (req, res, next) => {
   let promise = model.deleteImage(req.params.id)
 
@@ -144,7 +148,6 @@ deleteImage = (req, res, next) => {
       message: `Image delete to ${req.params.id} updated`
     })
   })
-
 }
 
 module.exports = {

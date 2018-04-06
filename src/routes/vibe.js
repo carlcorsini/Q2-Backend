@@ -14,17 +14,26 @@ router.get('/images/:id', ctrl.getUserImages)
 
 router.get('/friends/:id', ctrl.getFriends)
 
-//create profile
+// ===============================================
+// POST ROUTES TO CREATE USER PROFILE
+// ===============================================
+
 router.post('/profile/', ctrl.createProfile)
 
-//update
+// ===============================================
+// PUT ROUTES TO UPDATE USER PROFILE
+// ===============================================
+
 router.put('/:id', ctrl.updateProfile)
 
 router.post('/images/:id', ctrl.uploadImage)
 
 router.post('/friends', ctrl.follow)
 
-// delete
+// ===============================================
+// DELETE ROUTES TO DESTROY
+// ===============================================
+
 router.delete('/images/:id', ctrl.deleteImage)
 
 module.exports = router
