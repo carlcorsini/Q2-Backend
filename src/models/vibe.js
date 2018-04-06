@@ -42,8 +42,8 @@ createProfile = (name, email, password) => {
   })
 }
 
-updateProfile = (id, bio, profile_pic, interests) => {
-  return db('user').where('id', id).update('bio', bio).update('profile_pic', profile_pic).update('interests', interests)
+updateProfile = (id, bio, profile_pic) => {
+  return db('user').where('id', id).update('bio', bio).update('profile_pic', profile_pic)
 }
 
 uploadImage = (id, url, type, title, description) => {
