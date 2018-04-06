@@ -53,8 +53,10 @@ uploadImage = (id, url, title, description) => {
   })
 }
 
-
-
+search = (input) => {
+  return db('User').where('name',
+    'like', `%${input}%`)
+}
 
 
 module.exports = {
@@ -64,5 +66,6 @@ module.exports = {
   getFriends,
   createProfile,
   updateProfile,
-  uploadImage
+  uploadImage,
+  search
 }
