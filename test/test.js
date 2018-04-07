@@ -17,6 +17,7 @@ describe('The Vibe', function() {
         Promise.resolve('Everything is OK')
       })
       .then(() => global.knex = require('../db'))
+      .then(() => knex.migrate.rollback())
       .then(() => knex.migrate.latest(config))
       .then(() => knex.seed.run())
       .catch(() => console.log(`Migrations or seeds failed.`))
@@ -64,7 +65,7 @@ describe('The Vibe', function() {
   describe('#getFriends()', function() {
     it('should return a list of all friends associated with that user', function() {
       return vibe.getFriends(1).then(result => {
-        expect(result.length).to.equal(3)
+        expect(result.length).to.equal(2)
 
         const row = result[0]
         expect(row.followee_id).to.be.ok
@@ -75,11 +76,11 @@ describe('The Vibe', function() {
 
   describe('#uploadImage()', function() {
     it('should upload an image to the database', function() {
-      return vibe.uploadImage(1, 'example.com', 'title', 'description').then(images => {
+      return vibe.uploadImage(1, 'example.com', 'image', 'title', 'description').then(images => {
         expect(images.length).to.equal(10)
 
         const row = images[images.length - 1]
-        expect(row.image_url).to.equal('example.com')
+        expect(row.url).to.equal('example.com')
       })
     })
   })

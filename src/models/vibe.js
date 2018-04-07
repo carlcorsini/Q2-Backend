@@ -18,7 +18,7 @@ getUserById = (id) => {
   })
 }
 
-getUserImages = (id) => {
+getUserMedia = (id) => {
   return db('user').where('user.id', id).select('user.id', 'media.id', 'media.url', 'media.type', 'media.title', 'media.description')
     .join('media', 'user.id', 'media.user_id')
     .then(result => {
@@ -28,9 +28,8 @@ getUserImages = (id) => {
 }
 
 getFriends = (id) => {
-  return db('friendships').join('user', 'user.id', 'friendships.follower_id').where('friendships.follower_id', id).select('followee_id', 'profile_pic').then(result => {
+  return db('friendships').join('user', 'user.id', 'friendships.follower_id').where('friendships.followee_id', id).select('follower_id', 'profile_pic').then(result => {
     return result
-    console.log(result);
   })
 }
 
@@ -46,7 +45,7 @@ updateProfile = (id, bio, profile_pic) => {
   return db('user').where('id', id).update('bio', bio).update('profile_pic', profile_pic)
 }
 
-uploadImage = (id, url, type, title, description) => {
+uploadMedia = (id, url, type, title, description) => {
   return db('media').insert({
     url: url,
     type: type,
@@ -68,7 +67,7 @@ follow = (followee, follower) => {
 }
 
 
-deleteImage = (id) => {
+deleteMedia = (id) => {
   return db('media').where('id', id).del().then(result => {
     return db('media')
   })
@@ -83,12 +82,12 @@ search = (input) => {
 module.exports = {
   getAllUsers,
   getUserById,
-  getUserImages,
+  getUserMedia,
   getFriends,
   createProfile,
   updateProfile,
-  uploadImage,
+  uploadMedia,
   follow,
-  deleteImage,
+  deleteMedia,
   search
 }

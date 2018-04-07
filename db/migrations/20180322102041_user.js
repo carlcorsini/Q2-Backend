@@ -7,7 +7,6 @@ exports.up = function(knex, Promise) {
     table.text('profile_pic').defaultTo('')
     table.text('location').defaultTo('')
     table.text('bio').defaultTo('')
-    table.text('interests').defaultTo('')
     table.text('color').defaultTo('')
     table.timestamps(true, true)
   })

@@ -37,8 +37,8 @@ getUserById = (req, res, next) => {
   })
 }
 
-getUserImages = (req, res, next) => {
-  let promise = model.getUserImages(req.params.id)
+getUserMedia = (req, res, next) => {
+  let promise = model.getUserMedia(req.params.id)
 
   promise.then((result) => {
     // console.log(users)
@@ -105,8 +105,8 @@ updateProfile = (req, res, next) => {
   // })
 }
 
-uploadImage = (req, res, next) => {
-  let promise = model.uploadImage(req.params.id, req.body.url, req.body.type, req.body.title, req.body.description)
+uploadMedia = (req, res, next) => {
+  let promise = model.uploadMedia(req.params.id, req.body.url, req.body.type, req.body.title, req.body.description)
 
   promise.then((result) => {
     res.status(200).json({
@@ -151,8 +151,8 @@ follow = (req, res, next) => {
 // PROCESS USER DATA MODELS TO DELETE/DESTROY
 // ===============================================
 
-deleteImage = (req, res, next) => {
-  let promise = model.deleteImage(req.params.id)
+deleteMedia = (req, res, next) => {
+  let promise = model.deleteMedia(req.params.id)
 
   promise.then((result) => {
     res.status(200).json({
@@ -165,12 +165,12 @@ deleteImage = (req, res, next) => {
 module.exports = {
   getAllUsers,
   getUserById,
-  getUserImages,
+  getUserMedia,
   getFriends,
   createProfile,
   updateProfile,
-  uploadImage,
+  uploadMedia,
   follow,
-  deleteImage,
+  deleteMedia,
   search
 }
