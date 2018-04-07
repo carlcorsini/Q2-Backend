@@ -10,7 +10,7 @@ router.get('/', ctrl.getAllUsers)
 
 router.get('/:id', ctrl.getUserById)
 
-router.get('/images/:id', ctrl.getUserImages)
+router.get('/media/:id', ctrl.getUserMedia)
 
 router.get('/friends/:id', ctrl.getFriends)
 
@@ -23,7 +23,7 @@ router.get('/friends/:id', ctrl.getFriends)
 router.get('/search/:input', ctrl.search)
 
 
-//create profile
+
 router.post('/profile/', ctrl.createProfile)
 
 // ===============================================
@@ -32,7 +32,7 @@ router.post('/profile/', ctrl.createProfile)
 
 router.put('/:id', ctrl.updateProfile)
 
-router.post('/images/:id', ctrl.uploadImage)
+router.post('/media/:id', ctrl.uploadMedia)
 
 router.post('/friends', ctrl.follow)
 
@@ -40,6 +40,6 @@ router.post('/friends', ctrl.follow)
 // DELETE ROUTES TO DESTROY
 // ===============================================
 
-router.delete('/images/:id', ctrl.deleteImage)
+router.delete('/media/:id', ctrl.deleteMedia)
 
 module.exports = router
