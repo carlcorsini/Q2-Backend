@@ -74,8 +74,19 @@ describe('The Vibe', function() {
     })
   })
 
-  describe('#uploadImage()', function() {
-    it('should upload an image to the database', function() {
+  describe('#uploadMedia()', function() {
+    it('should upload an media to the database', function() {
+      return vibe.uploadMedia(1, 'example.com', 'image', 'title', 'description').then(images => {
+        expect(images.length).to.equal(10)
+
+        const row = images[images.length - 1]
+        expect(row.url).to.equal('example.com')
+      })
+    })
+  })
+
+  describe('#createProfile()', function() {
+    it('should create a profile and add it to the database', function() {
       return vibe.uploadImage(1, 'example.com', 'image', 'title', 'description').then(images => {
         expect(images.length).to.equal(10)
 
@@ -85,30 +96,5 @@ describe('The Vibe', function() {
     })
   })
 
-  xdescribe('BONUS: #getCocktailsWithNestedIngredientsAndGlass()', function() {
-    it('should return a list of all the cocktails with their ingredients and associated glass', function() {
-      return main.getCocktailsWithNestedIngredientsAndGlass().then(cocktails => {
-        expect(cocktails.length).to.equal(3)
 
-        const manhattan = cocktails.find(cocktail => cocktail.name === 'Manhattan')
-        expect(manhattan.id).to.be.ok
-        expect(manhattan.name).to.be.ok
-        expect(manhattan.instructions).to.be.ok
-        expect(manhattan.garnish).to.be.ok
-
-        const glass = manhattan.glass
-        expect(glass).to.be.ok
-        expect(glass.id).to.be.ok
-        expect(glass.name).to.be.ok
-
-        const ingredients = manhattan.ingredients
-        expect(ingredients).to.be.ok
-
-        const ingredient = ingredients[0]
-        expect(ingredient.id).to.be.ok
-        expect(ingredient.name).to.be.ok
-        expect(ingredient.amount).to.be.ok
-      })
-    })
-  })
 })
