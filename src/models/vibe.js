@@ -37,7 +37,8 @@ createProfile = (name, email, password) => {
   return db('user').insert({
     name,
     email,
-    password
+    password,
+    profile_pic: 'http://www.ieeeaustsb.org/files/2017/05/placeholder-female-square.png',
   })
 }
 
@@ -74,10 +75,10 @@ deleteMedia = (id) => {
 }
 
 search = (input) => {
-  return db('user').where('name',
-    'like', `%${input}%`)
+  return db('user').whereRaw(`LOWER(name) LIKE ?`, [`%${input}%`])
 }
 
+// qb.whereRaw(`LOWER(name) LIKE ?`, [`%${search}%`])
 
 module.exports = {
   getAllUsers,
