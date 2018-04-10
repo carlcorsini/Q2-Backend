@@ -87,11 +87,12 @@ describe('The Vibe', function() {
 
   describe('#createProfile()', function() {
     it('should create a profile and add it to the database', function() {
-      return vibe.uploadImage(1, 'example.com', 'image', 'title', 'description').then(images => {
-        expect(images.length).to.equal(10)
+      return vibe.createProfile('chad bradley', 'example@email.com', 'password').then(users => {
+        console.log(users)
+        expect(users.length).to.equal(5)
 
-        const row = images[images.length - 1]
-        expect(row.url).to.equal('example.com')
+        // const row = images[images.length - 1]
+        // expect(row.url).to.equal('example.com')
       })
     })
   })

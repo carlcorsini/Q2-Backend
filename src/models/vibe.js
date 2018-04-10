@@ -38,6 +38,8 @@ createProfile = (name, email, password) => {
     email,
     password,
     profile_pic: 'http://www.ieeeaustsb.org/files/2017/05/placeholder-female-square.png',
+  }).then(result => {
+    return db('user')
   })
 }
 

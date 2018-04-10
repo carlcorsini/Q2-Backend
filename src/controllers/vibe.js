@@ -80,9 +80,9 @@ createProfile = (req, res, next) => {
     })
   })
 
-  // promise.catch((error) => {
-  //   res.status().json()
-  // })
+  promise.catch((error) => {
+    res.status().json()
+  })
 }
 
 // ===============================================
@@ -100,9 +100,9 @@ updateProfile = (req, res, next) => {
     })
   })
 
-  // promise.catch((error) => {
-  //   res.status().json()
-  // })
+  promise.catch((error) => {
+    res.status().json()
+  })
 }
 
 uploadMedia = (req, res, next) => {
@@ -113,6 +113,10 @@ uploadMedia = (req, res, next) => {
       result,
       message: `Image uploaded to ${req.params.id} updated`
     })
+  })
+
+  promise.catch((error) => {
+    res.status().json()
   })
 }
 
@@ -142,9 +146,9 @@ follow = (req, res, next) => {
     })
   })
 
-  // promise.catch((error) => {
-  //   res.status().json()
-  // })
+  promise.catch((error) => {
+    res.status().json()
+  })
 }
 
 // ===============================================
@@ -159,6 +163,10 @@ deleteMedia = (req, res, next) => {
       result,
       message: `Image delete to ${req.params.id} updated`
     })
+  })
+
+  promise.catch((error) => {
+    res.status().json()
   })
 }
 
