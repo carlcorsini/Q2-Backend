@@ -10,7 +10,7 @@ exports.seed = function(knex, Promise) {
           password: 'yahoo',
           profile_pic: 'https://avatars2.githubusercontent.com/u/28901454?s=460&v=4',
           location: 'San Francisco, CA',
-          bio: 'Some really boring information about yourself',
+          bio: 'Software Engineer',
           color: 'Orange'
         },
         {
@@ -20,7 +20,7 @@ exports.seed = function(knex, Promise) {
           password: 'meowmix',
           profile_pic: 'https://avatars2.githubusercontent.com/u/23747060?s=460&v=4',
           location: 'San Francisco, CA',
-          bio: 'Some really boring information about yourself',
+          bio: 'Software Engineer',
           color: 'White'
         },
         {
@@ -30,7 +30,7 @@ exports.seed = function(knex, Promise) {
           password: 'password',
           profile_pic: 'https://cdn-images-1.medium.com/max/1200/0*tzjHqs7icyhShRvw.',
           location: 'San Francisco, CA',
-          bio: 'Some really boring information about yourself',
+          bio: 'Software Engineer',
 
           color: 'Black'
         },
@@ -41,7 +41,7 @@ exports.seed = function(knex, Promise) {
           password: 'password',
           profile_pic: 'https://listen-current-prod.s3.amazonaws.com/events/photos/000/000/467/5dc32f692b8388e9e001b1c7c940bb74e17aa1bc/medium/Panda.Square.png?1434136392',
           location: 'San Francisco, CA',
-          bio: 'Some really boring information about yourself',
+          bio: 'I love bamboo',
           color: 'Black'
         },
         {

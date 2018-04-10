@@ -22,7 +22,6 @@ getUserMedia = (id) => {
   return db('user').where('user.id', id).select('user.id', 'media.id', 'media.url', 'media.type', 'media.title', 'media.description')
     .join('media', 'user.id', 'media.user_id')
     .then(result => {
-      // console.log(result);
       return result
     })
 }
@@ -78,7 +77,6 @@ search = (input) => {
   return db('user').whereRaw(`LOWER(name) LIKE ?`, [`%${input}%`])
 }
 
-// qb.whereRaw(`LOWER(name) LIKE ?`, [`%${search}%`])
 
 module.exports = {
   getAllUsers,
