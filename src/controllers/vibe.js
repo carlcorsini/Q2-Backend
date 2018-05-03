@@ -8,7 +8,6 @@ getAllUsers = (req, res, next) => {
   let promise = model.getAllUsers(req.query.limit)
 
   promise.then((users) => {
-    // console.log(users)
     res.status(200).json({
       users,
       message: 'all users returned succesfully'
@@ -25,7 +24,6 @@ getUserById = (req, res, next) => {
   let promise = model.getUserById(req.params.id)
 
   promise.then((result) => {
-    // console.log(users)
     res.status(200).json({
       result,
       message: `id of ${req.params.id} returned`
@@ -41,10 +39,9 @@ getUserMedia = (req, res, next) => {
   let promise = model.getUserMedia(req.params.id)
 
   promise.then((result) => {
-    // console.log(users)
     res.status(200).json({
       result,
-      message: `Images of ${req.params.id} returned`
+      message: `Media of ${req.params.id} returned`
     })
   })
 
@@ -57,7 +54,6 @@ getFriends = (req, res, next) => {
   let promise = model.getFriends(req.params.id)
 
   promise.then((result) => {
-    // console.log(users)
     res.status(200).json({
       result,
       message: `Friends of ${req.params.id} returned`
@@ -73,8 +69,7 @@ createProfile = (req, res, next) => {
   let promise = model.createProfile(req.body.name, req.body.createEmail, req.body.createPassword)
 
   promise.then((result) => {
-    // console.log(users)
-    res.status(200).json({
+    res.status(201).json({
       result,
       message: `Profile for ${req.params.name} created`
     })
@@ -96,7 +91,7 @@ updateProfile = (req, res, next) => {
 
     res.status(200).json({
       result,
-      message: `Friends of ${req.params.id} updated`
+      message: `Profile of ${req.params.id} updated`
     })
   })
 
@@ -109,9 +104,9 @@ uploadMedia = (req, res, next) => {
   let promise = model.uploadMedia(req.params.id, req.body.url, req.body.type, req.body.title, req.body.description)
 
   promise.then((result) => {
-    res.status(200).json({
+    res.status(201).json({
       result,
-      message: `Image uploaded to ${req.params.id} updated`
+      message: `Media of ${req.params.id} updated`
     })
   })
 
@@ -127,20 +122,20 @@ search = (req, res, next) => {
   promise.then((result) => {
     res.status(200).json({
       result,
-      // message: `Image uploaded to ${req.params.id} updated`
+      message: `Results of ${req.params.input} returned`
     })
   })
 
-  // promise.catch((error) => {
-  //   res.status().json()
-  // })
+  promise.catch((error) => {
+    res.status().json()
+  })
 }
 
 follow = (req, res, next) => {
   let promise = model.follow(req.body.friend, req.body.userId)
 
   promise.then((result) => {
-    res.status(200).json({
+    res.status(201).json({
       result,
       message: `${req.body.friend} followed!`
     })
@@ -161,7 +156,7 @@ deleteMedia = (req, res, next) => {
   promise.then((result) => {
     res.status(200).json({
       result,
-      message: `Image delete to ${req.params.id} updated`
+      message: `Image id:${req.params.id} deleted`
     })
   })
 

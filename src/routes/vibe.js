@@ -22,8 +22,6 @@ router.get('/friends/:id', ctrl.getFriends)
 
 router.get('/search/:input', ctrl.search)
 
-
-
 router.post('/profile/', ctrl.createProfile)
 
 // ===============================================

@@ -1,6 +1,5 @@
 const db = require('../../db')
 const uuid = require('uuid/v4')
-const path = require('path')
 
 // ===============================================
 // MANAGE USER DATA
@@ -12,73 +11,102 @@ getAllUsers = () => {
   })
 }
 
-getUserById = (id) => {
-  return db('user').where('id', id).then(result => {
-    return result
-  })
+getUserById = id => {
+  return db('user')
+    .where('id', id)
+    .then(result => {
+      return result
+    })
 }
 
-getUserMedia = (id) => {
-  return db('user').where('user.id', id).select('user.id', 'media.id', 'media.url', 'media.type', 'media.title', 'media.description')
+getUserMedia = id => {
+  return db('user')
+    .where('user.id', id)
+    .select(
+      'user.id',
+      'media.id',
+      'media.url',
+      'media.type',
+      'media.title',
+      'media.description'
+    )
     .join('media', 'user.id', 'media.user_id')
     .then(result => {
       return result
     })
 }
 
-getFriends = (id) => {
-  return db('friendships').join('user', 'user.id', 'friendships.follower_id').where('friendships.followee_id', id).select('follower_id', 'profile_pic').then(result => {
-    return result
-  })
+getFriends = id => {
+  return db('friendships')
+    .join('user', 'user.id', 'friendships.follower_id')
+    .where('friendships.followee_id', id)
+    .select('follower_id', 'profile_pic')
+    .then(result => {
+      return result
+    })
 }
 
 createProfile = (name, email, password) => {
-  return db('user').insert({
-    name,
-    email,
-    password,
-    profile_pic: 'http://www.ieeeaustsb.org/files/2017/05/placeholder-female-square.png',
-  }).then(result => {
-    return db('user')
-  })
+  return db('user')
+    .insert({
+      name,
+      email,
+      password,
+      profile_pic:
+        'http://www.ieeeaustsb.org/files/2017/05/placeholder-female-square.png'
+    })
+    .then(result => {
+      return db('user')
+    })
 }
 
 updateProfile = (id, bio, profile_pic) => {
-  return db('user').where('id', id).update('bio', bio).update('profile_pic', profile_pic)
+  return db('user')
+    .where('id', id)
+    .update('bio', bio)
+    .update('profile_pic', profile_pic)
+    .then(result => {
+      return db('user').where('id', id)
+    })
 }
 
 uploadMedia = (id, url, type, title, description) => {
-  return db('media').insert({
-    url: url,
-    type: type,
-    title: title,
-    description: description,
-    user_id: id
-  }).then(result => {
-    return db('media')
-  })
+  return db('media')
+    .insert({
+      url: url,
+      type: type,
+      title: title,
+      description: description,
+      user_id: id
+    })
+    .then(result => {
+      return db('media').where('user_id', id)
+    })
 }
 
 follow = (followee, follower) => {
-  return db('friendships').insert({
-    followee_id: followee,
-    follower_id: follower
-  }).then(result => {
-    return db('friendships')
-  })
+  return db('friendships')
+    .insert({
+      followee_id: followee,
+      follower_id: follower
+    })
+    .then(result => {
+      return db('friendships').where('followee_id', followee)
+    })
 }
 
-
-deleteMedia = (id) => {
-  return db('media').where('id', id).del().then(result => {
-    return db('media')
-  })
+deleteMedia = id => {
+  return db('media')
+    .where('id', id)
+    .del()
+    .then(result => {
+      return db('media')
+    })
 }
 
-search = (input) => {
+search = input => {
   return db('user').whereRaw(`LOWER(name) LIKE ?`, [`%${input}%`])
 }
-
 
 module.exports = {
   getAllUsers,
